@@ -3,27 +3,20 @@ import DummyData from '../DummyData';
 import { FaTrashAlt } from 'react-icons/fa';
 import './itemList.css'
 
-// const DummyData = [
-//     {
-//         id: 1,
-//         completed: false,
-//         name: "Eggs"
-//     },
-//     {
-//         id: 2,
-//         completed: false,
-//         name: "Milk"
-//     },
-//     {
-//         id: 3,
-//         completed: true,
-//         name: "Bread"
-//     }
-// ];
-
+// TODO: ADD ITEMS TO LIST
+// TODO: DELETE ITEMS FROM LIST
+// TODO: Get items from local storage, right now on refresh using dummb data for state but state 'items' is still currently as user left them
 
 const ItemList = () => {
     const [items, setItems] = useState(DummyData);
+
+    const handleCompleted = (id) => {
+        const itemsList = items.map((item) => item.id === id ? { ...item, completed: !item.completed } : item);
+        console.log("itemsList", itemsList)
+        setItems(itemsList);
+        localStorage.setItem('shoppinglist', JSON.stringify(itemsList));
+    }
+
     return (
         <main>
             {items.length ? (
@@ -31,7 +24,10 @@ const ItemList = () => {
                     {items.map((item) => (
                         // List element for each shopping list item.
                         <li className="item" key={item.id}>
-                            <input type="checkbox" />
+                            <input
+                                type="checkbox"
+                                onChange={() => handleCompleted(item.id)}
+                                checked={item.completed} />
                             <label>{item.name}</label>
                             <FaTrashAlt role="button" />
                         </li>
@@ -39,7 +35,7 @@ const ItemList = () => {
                 </ul>
             ) : (
                 // Conditional for if the shopping list is empty.
-                <p style={{ marginTop: '2rem' }}>Shopping list is empty.</p>
+                <p style={{ marginTop: '1.5rem' }}>Shopping list is empty.</p>
             )}
         </main>
     )
