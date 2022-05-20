@@ -6,6 +6,7 @@ import './itemList.css'
 // TODO: ADD ITEMS TO LIST
 // TODO: DELETE ITEMS FROM LIST
 // TODO: Get items from local storage, right now on refresh using dummb data for state but state 'items' is still currently as user left them
+// TODO: Maybe connect to database for longterm storage
 
 const ItemList = () => {
     const [items, setItems] = useState(DummyData);
