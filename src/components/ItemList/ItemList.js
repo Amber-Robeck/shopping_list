@@ -17,6 +17,13 @@ const ItemList = () => {
         localStorage.setItem('shoppinglist', JSON.stringify(itemsList));
     }
 
+    const handleDelete = (id) => {
+        const itemsList = items.filter((item) => item.id !== id);
+        console.log('deletedlist', itemsList)
+        setItems(itemsList);
+        localStorage.setItem('shoppinglist', JSON.stringify(itemsList));
+    }
+
     return (
         <main>
             {items.length ? (
@@ -29,7 +36,10 @@ const ItemList = () => {
                                 onChange={() => handleCompleted(item.id)}
                                 checked={item.completed} />
                             <label>{item.name}</label>
-                            <FaTrashAlt role="button" />
+                            <FaTrashAlt
+                                role="button"
+                                onClick={() => handleDelete(item.id)}
+                            />
                         </li>
                     ))}
                 </ul>
