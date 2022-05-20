@@ -10,19 +10,22 @@ import './itemList.css'
 const ItemList = () => {
     const [items, setItems] = useState(DummyData);
 
+    const localSave = (data) => {
+        setItems(data);
+        localStorage.setItem('shoppinglist', JSON.stringify(data));
+    };
+
     const handleCompleted = (id) => {
         const itemsList = items.map((item) => item.id === id ? { ...item, completed: !item.completed } : item);
-        console.log("itemsList", itemsList)
-        setItems(itemsList);
-        localStorage.setItem('shoppinglist', JSON.stringify(itemsList));
-    }
+        console.log("itemsList", itemsList);
+        localSave(itemsList);
+    };
 
     const handleDelete = (id) => {
         const itemsList = items.filter((item) => item.id !== id);
-        console.log('deletedlist', itemsList)
-        setItems(itemsList);
-        localStorage.setItem('shoppinglist', JSON.stringify(itemsList));
-    }
+        console.log('deletedlist', itemsList);
+        localSave(itemsList);
+    };
 
     return (
         <main>
