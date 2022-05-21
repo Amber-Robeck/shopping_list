@@ -4,13 +4,13 @@ import './addItem.css';
 
 // TODO: Need to do prop drilling to get original items list to add to local storage
 // TODO: Console log is working for value of newItem
-const AddItem = ({ newItem, setNewItem }) => {
+const AddItem = ({ newItem, setNewItem, handleSubmit }) => {
     // const [newItem, setNewItem] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(newItem);
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(newItem);
+    // }
 
     return (
         <form className='addForm' onSubmit={handleSubmit}>

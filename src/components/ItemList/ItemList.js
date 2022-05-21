@@ -8,25 +8,25 @@ import './itemList.css'
 // TODO: Get items from local storage, right now on refresh using dummb data for state but state 'items' is still currently as user left them
 // TODO: Maybe connect to database for longterm storage
 
-const ItemList = () => {
-    const [items, setItems] = useState(DummyData);
+const ItemList = ({ items, handleCompleted, handleDelete }) => {
+    // const [items, setItems] = useState(DummyData);
 
-    const localSave = (data) => {
-        setItems(data);
-        localStorage.setItem('shoppinglist', JSON.stringify(data));
-    };
+    // const localSave = (data) => {
+    //     setItems(data);
+    //     localStorage.setItem('shoppinglist', JSON.stringify(data));
+    // };
 
-    const handleCompleted = (id) => {
-        const itemsList = items.map((item) => item.id === id ? { ...item, completed: !item.completed } : item);
-        console.log("itemsList", itemsList);
-        localSave(itemsList);
-    };
+    // const handleCompleted = (id) => {
+    //     const itemsList = items.map((item) => item.id === id ? { ...item, completed: !item.completed } : item);
+    //     console.log("itemsList", itemsList);
+    //     localSave(itemsList);
+    // };
 
-    const handleDelete = (id) => {
-        const itemsList = items.filter((item) => item.id !== id);
-        console.log('deletedlist', itemsList);
-        localSave(itemsList);
-    };
+    // const handleDelete = (id) => {
+    //     const itemsList = items.filter((item) => item.id !== id);
+    //     console.log('deletedlist', itemsList);
+    //     localSave(itemsList);
+    // };
 
     return (
         <main>
