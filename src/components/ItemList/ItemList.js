@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DummyData from '../DummyData';
+// import DummyData from '../DummyData';
 import { FaTrashAlt } from 'react-icons/fa';
 import './itemList.css'
 
