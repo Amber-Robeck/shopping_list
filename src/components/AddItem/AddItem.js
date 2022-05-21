@@ -4,8 +4,8 @@ import './addItem.css';
 
 // TODO: Need to do prop drilling to get original items list to add to local storage
 // TODO: Console log is working for value of newItem
-const AddItem = () => {
-    const [newItem, setNewItem] = useState('');
+const AddItem = ({ newItem, setNewItem }) => {
+    // const [newItem, setNewItem] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
