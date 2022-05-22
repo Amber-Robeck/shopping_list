@@ -6,7 +6,7 @@ import { useState } from 'react'
 import DummyData from './components/DummyData';
 
 function App() {
-  const [items, setItems] = useState(DummyData);
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')) || DummyData);
   const [newItem, setNewItem] = useState('');
 
 
@@ -27,11 +27,12 @@ function App() {
     localSave(itemsList);
   };
 
-  const addItem = (item) => {
+  const addItem = (name) => {
     const id = items.length ? items[items.length - 1].id + 1 : 1;
-    const myNewItem = { id, completed: false, item };
+    const myNewItem = { id, completed: false, name };
     const itemsList = [...items, myNewItem];
     localSave(itemsList);
+    // setItems(itemsList);
 
   };
 
