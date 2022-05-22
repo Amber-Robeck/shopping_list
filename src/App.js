@@ -32,6 +32,7 @@ function App() {
     const myNewItem = { id, completed: false, name };
     const itemsList = [...items, myNewItem];
     localSave(itemsList);
+    setNewItem('');
     // setItems(itemsList);
 
   };
